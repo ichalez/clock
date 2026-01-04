@@ -32,6 +32,66 @@ npx serve
 
 Luego visita `http://localhost:8000` en tu navegador.
 
+## 🐳 Despliegue con Docker
+
+### Opción 1: Docker Compose (Recomendado)
+```bash
+# Construir y ejecutar
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Detener
+docker-compose down
+```
+
+La aplicación estará disponible en `http://localhost:3000`
+
+### Opción 2: Docker directo
+```bash
+# Construir la imagen
+docker build -t world-clock .
+
+# Ejecutar el contenedor
+docker run -d -p 3000:80 --name world-clock world-clock
+
+# Ver logs
+docker logs -f world-clock
+
+# Detener y eliminar
+docker stop world-clock && docker rm world-clock
+```
+
+### 🚀 Despliegue en Coolify
+
+1. **Conecta tu repositorio de GitHub**
+   - En Coolify, crea un nuevo proyecto
+   - Selecciona "Git Repository"
+   - Conecta: `https://github.com/ichalez/clock`
+
+2. **Configuración del proyecto**
+   - **Build Pack**: Dockerfile
+   - **Port**: 80
+   - **Publish Directory**: (dejar vacío, usa Dockerfile)
+
+3. **Variables de entorno** (opcional)
+   - `TZ=Europe/Madrid`
+
+4. **Despliega**
+   - Coolify detectará automáticamente el Dockerfile
+   - Construirá la imagen y desplegará el contenedor
+   - La aplicación estará disponible en tu dominio configurado
+
+### Características del contenedor Docker
+- ✅ Imagen ligera basada en `nginx:alpine` (~23MB)
+- ✅ Compresión gzip habilitada
+- ✅ Cache de assets estáticos
+- ✅ Headers de seguridad configurados
+- ✅ Auto-restart en caso de fallo
+- ✅ Optimizado para producción
+
+
 ## 🎨 Tecnologías
 
 - **HTML5**: Estructura semántica

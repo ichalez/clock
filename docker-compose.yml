@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  clock:
+    build: .
+    container_name: world-clock
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Madrid
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
