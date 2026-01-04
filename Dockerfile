@@ -7,21 +7,21 @@ COPY style.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 COPY README.md /usr/share/nginx/html/
 
-# Create a simple nginx configuration
+# Create nginx configuration
 RUN echo 'server { \
     listen 80; \
     server_name _; \
     root /usr/share/nginx/html; \
     index index.html; \
     \
-    location / { \
-    try_files $uri $uri/ /index.html; \
-    add_header Cache-Control "no-cache"; \
+    # Serve static files directly \
+    location ~* \.(js|css|html)$ { \
+    try_files $uri =404; \
     } \
     \
-    location ~* \.(js|css)$ { \
-    add_header Content-Type "application/javascript" always; \
-    add_header Cache-Control "no-cache"; \
+    # Main location for HTML \
+    location / { \
+    try_files $uri $uri/ /index.html; \
     } \
     }' > /etc/nginx/conf.d/default.conf
 
