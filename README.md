@@ -46,7 +46,7 @@ docker-compose logs -f
 docker-compose down
 ```
 
-La aplicación estará disponible en `http://localhost:3000`
+La aplicación estará disponible en `http://localhost:3001`
 
 ### Opción 2: Docker directo
 ```bash
@@ -54,7 +54,7 @@ La aplicación estará disponible en `http://localhost:3000`
 docker build -t world-clock .
 
 # Ejecutar el contenedor
-docker run -d -p 3000:80 --name world-clock world-clock
+docker run -d -p 3001:80 --name world-clock world-clock
 
 # Ver logs
 docker logs -f world-clock
