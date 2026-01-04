@@ -1,30 +1,5 @@
-// Clock configuration for each timezone
-const clocks = [
-    {
-        timezone: 'Europe/Madrid',
-        hourHand: document.getElementById('madrid-hour'),
-        minuteHand: document.getElementById('madrid-minute'),
-        secondHand: document.getElementById('madrid-second'),
-        digitalDisplay: document.getElementById('madrid-digital'),
-        dateDisplay: document.getElementById('madrid-date')
-    },
-    {
-        timezone: 'America/Los_Angeles',
-        hourHand: document.getElementById('sf-hour'),
-        minuteHand: document.getElementById('sf-minute'),
-        secondHand: document.getElementById('sf-second'),
-        digitalDisplay: document.getElementById('sf-digital'),
-        dateDisplay: document.getElementById('sf-date')
-    },
-    {
-        timezone: 'Australia/Sydney',
-        hourHand: document.getElementById('sydney-hour'),
-        minuteHand: document.getElementById('sydney-minute'),
-        secondHand: document.getElementById('sydney-second'),
-        digitalDisplay: document.getElementById('sydney-digital'),
-        dateDisplay: document.getElementById('sydney-date')
-    }
-];
+// Clock configuration - will be initialized when DOM is ready
+let clocks = [];
 
 /**
  * Update a single clock with the current time for its timezone
@@ -142,6 +117,34 @@ function addEntranceAnimations() {
  * Initialize the application
  */
 function init() {
+    // Initialize clock configuration after DOM is ready
+    clocks = [
+        {
+            timezone: 'Europe/Madrid',
+            hourHand: document.getElementById('madrid-hour'),
+            minuteHand: document.getElementById('madrid-minute'),
+            secondHand: document.getElementById('madrid-second'),
+            digitalDisplay: document.getElementById('madrid-digital'),
+            dateDisplay: document.getElementById('madrid-date')
+        },
+        {
+            timezone: 'America/Los_Angeles',
+            hourHand: document.getElementById('sf-hour'),
+            minuteHand: document.getElementById('sf-minute'),
+            secondHand: document.getElementById('sf-second'),
+            digitalDisplay: document.getElementById('sf-digital'),
+            dateDisplay: document.getElementById('sf-date')
+        },
+        {
+            timezone: 'Australia/Sydney',
+            hourHand: document.getElementById('sydney-hour'),
+            minuteHand: document.getElementById('sydney-minute'),
+            secondHand: document.getElementById('sydney-second'),
+            digitalDisplay: document.getElementById('sydney-digital'),
+            dateDisplay: document.getElementById('sydney-date')
+        }
+    ];
+
     // Add entrance animations
     addEntranceAnimations();
 
